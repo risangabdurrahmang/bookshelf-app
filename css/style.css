@@ -1,0 +1,410 @@
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  --side-nav-color: #1b1a55;
+  --color-first: #070f2b;
+  --color-second: #535c91;
+  --color-third: #9290c3;
+  --color-fourth: white;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-first);
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+/*=============== HEADER ===============*/
+header {
+  padding: 15px;
+  background-color: var(--side-nav-color);
+  position: sticky;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid rgb(100, 100, 100);
+  z-index: 1;
+  h2 {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+  }
+}
+
+/*=============== MAIN ===============*/
+main {
+  width: 100%;
+  padding: 30px 20px;
+}
+
+/* FORM */
+.main-form {
+  width: 100%;
+  padding: 1em;
+}
+
+.main-form > h2 {
+  margin-bottom: 1em;
+  color: var(--color-third);
+  text-align: center;
+}
+
+.form-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-item {
+  width: 100%;
+  outline: none;
+  border-radius: 8px;
+  height: 50px;
+  border: 2px solid var(--color-third);
+  background: transparent;
+  color: var(--color-fourth);
+  padding: 10px 0 0 10px;
+}
+
+.input-item::placeholder {
+  color: transparent;
+}
+
+.form-control {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 8px;
+}
+
+.input-field {
+  position: relative;
+  width: 100%;
+}
+
+.input-field .label-item {
+  position: absolute;
+  top: -16px;
+  left: 16px;
+  color: var(--color-fourth);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  padding: 8px;
+  background-color: var(--color-first);
+}
+
+.input_inline {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--color-fourth);
+}
+
+.submit-btn {
+  text-align: center;
+  height: 55px;
+  background-color: var(--color-second);
+  border-radius: 11px;
+  border: 0;
+  outline: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-first);
+  border: 2px solid #535c91;
+}
+
+.remove-btn {
+  margin-top: 1em;
+  width: 100%;
+  text-align: center;
+  height: 55px;
+  background-color: var(--color-first);
+  border: 2px solid white;
+  border-radius: 11px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: red;
+}
+
+.search_section {
+  width: 100%;
+  margin-top: 2em;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.search_section > h2 {
+  color: var(--color-third);
+}
+
+.InputContainer {
+  margin: 1em;
+  padding: 0.5em;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-first);
+  border: 2px solid var(--color-second);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  padding-left: 15px;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  color: white;
+  background-color: var(--color-first);
+}
+
+.labelforsearch {
+  width: 13px;
+  margin-right: 0.5em;
+}
+
+.border {
+  height: 80%;
+  width: 2px;
+  background-color: var(--color-second);
+  margin-inline: 0.5em;
+}
+
+.fa-magnifying-glass {
+  color: rgb(114, 114, 114);
+}
+
+.dropdown-content {
+  background-color: var(--color-first);
+  color: white;
+  border: none;
+  width: 100px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.dropdown-content:focus {
+  outline: none;
+}
+
+.dropdown-content option {
+  background-color: var(--color-second);
+}
+
+/* BOOK LIST */
+.right-content {
+  margin: 1em 0;
+}
+
+.container {
+  border-radius: 8px;
+  margin: 16px;
+  padding: 16px;
+  height: fit-content;
+}
+
+.container-header {
+  color: var(--color-third);
+  text-align: center;
+}
+
+.item {
+  border-radius: 16px;
+  margin-top: 16px;
+  padding: 12px 24px 12px 24px;
+  background-color: var(--color-first);
+  color: white;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-second);
+}
+
+.item > .inner h2 {
+  margin-bottom: unset;
+  color: var(--color-fourth);
+}
+
+.item > .inner p {
+  margin-top: 5px;
+  color: var(--color-third);
+}
+
+.empty-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-third);
+  margin: 2em 0;
+  font-size: 25px;
+  span {
+    text-align: center;
+    color: white;
+    font-size: 15px;
+  }
+}
+
+.form {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  height: 400px;
+  border-radius: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 4px;
+  font-size: 18;
+  font-weight: lighter;
+}
+
+.shadow {
+  box-shadow: 0 5px 10px var(--side-nav-color), 0 15px 40px var(--color-first);
+}
+
+.check-button {
+  font-size: 30px;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+  color: var(--color-third);
+}
+
+.check-button:hover {
+  color: greenyellow;
+}
+
+.edit-button {
+  font-size: 30px;
+  margin-left: 16px;
+  cursor: pointer;
+  border: none;
+  color: var(--color-third);
+}
+
+.edit-button:hover {
+  color: var(--color-fourth);
+}
+
+.trash-button {
+  font-size: 30px;
+  margin-left: 16px;
+  cursor: pointer;
+  border: none;
+  color: var(--color-third);
+}
+
+.trash-button:hover {
+  color: red;
+}
+
+.undo-button {
+  font-size: 30px;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+  color: var(--color-third);
+}
+
+.undo-button:hover {
+  color: var(--color-fourth);
+}
+
+.check-button:focus,
+.trash-button {
+  outline: none;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For Tablet devices */
+@media screen and (min-width: 768px) {
+  .search_section {
+    width: 80%;
+  }
+  .right-content {
+    display: flex;
+    justify-content: center;
+  }
+  .right-content .container {
+    width: 50%;
+  }
+  .item > .inner h2 {
+    font-size: 20px;
+  }
+  .item > .inner p {
+    font-size: 15px;
+  }
+}
+
+/* For Desktop devices */
+@media screen and (min-width: 1024px) {
+  main {
+    display: flex;
+    padding: 0;
+    align-items: flex-start;
+  }
+  .form-content {
+    width: 30%;
+    flex-direction: column-reverse;
+    margin-left: 1em;
+  }
+  .search_section {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  .right-content {
+    width: 70%;
+    margin: 0;
+  }
+}

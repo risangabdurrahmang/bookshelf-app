@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--=============== FONT AWESOME ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Bookshelf App</title>
+  </head>
+  <body>
+    <!--==================== NAVBAR ====================-->
+    <header>
+      <h2>Bookshelf</h2>
+    </header>
+    <!--==================== MAIN ====================-->
+    <main>
+      <aside class="form-content">
+        <div class="main-form">
+          <h2>Tambah Buku</h2>
+          <form class="form-control" id="form">
+            <div class="input-field">
+              <input class="input-item" type="text" id="inputBookTitle" name="inputBookTitle" required />
+              <label class="label-item" for="inputBookTitle">Judul</label>
+            </div>
+            <div class="input-field">
+              <input class="input-item" type="text" id="inputBookAuthor" name="inputBookAuthor" required />
+              <label class="label-item" for="inputBookAuthor">Penulis</label>
+            </div>
+            <div class="input-field">
+              <input class="input-item" id="inputBookYear" type="number" required />
+              <label class="label-item" for="inputBookYear">Tahun</label>
+            </div>
+            <div class="input_inline">
+              <label for="inputBookIsComplete">Selesai dibaca</label>
+              <input id="inputBookIsComplete" type="checkbox" />
+            </div>
+            <button id="bookSubmit" type="submit" class="submit-btn">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
+          </form>
+          <button id="booksClear" class="remove-btn">Hapus Semua Buku</button>
+        </div>
+        <section class="search_section">
+          <h2>Cari Buku</h2>
+          <div class="InputContainer">
+            <input id="searchBookTitle" type="text" placeholder="cari judul...." class="input" />
+            <label for="input" class="labelforsearch">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+            <div class="border"></div>
+            <select id="inputSelect" class="dropdown-content">
+              <option id="default" value="input" selected>Default</option>
+              <option id="title" value="title">Title</option>
+              <option id="author" value="author">Author</option>
+              <option id="year" value="year">Year</option>
+            </select>
+          </div>
+        </section>
+      </aside>
+      <article class="right-content">
+        <div class="container">
+          <h2 class="container-header">Belum Selesai Dibaca</h2>
+          <div class="book_item" id="belumselesai-dibaca"></div>
+        </div>
+        <div class="container">
+          <h2 class="container-header">Selesai Dibaca</h2>
+          <div class="book_item" id="selesai-dibaca"></div>
+        </div>
+      </article>
+    </main>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="js/script.js"></script>
+  </body>
+</html>

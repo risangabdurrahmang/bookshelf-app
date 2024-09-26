@@ -11,13 +11,13 @@ function generateId() {
   return +new Date().getTime();
 }
 
-function generatebookObject(id, title, author, year, isCompleted) {
+function generatebookObject(id, title, author, year, isComplete) {
   return {
     id,
     title,
     author,
-    year,
-    isCompleted,
+    year: parseInt(year),
+    isComplete,
   };
 }
 
@@ -70,7 +70,7 @@ function loadDataFromStorage() {
 }
 
 function makeBook(bookObject) {
-  const { id, title, author, year, isCompleted } = bookObject;
+  const { id, title, author, year, isComplete } = bookObject;
 
   const container = document.createElement("div");
   container.setAttribute("data-bookid", id);
@@ -107,7 +107,7 @@ function makeBook(bookObject) {
   completeButton.setAttribute("data-testid", "bookItemIsCompleteButton");
   completeButton.classList.add("completeButton");
   completeButton.addEventListener("click", function () {
-    isCompleted ? undoCompletedRead(id) : addCompleteRead(id);
+    isComplete ? undoCompletedRead(id) : addCompleteRead(id);
   });
 
   const deleteButton = document.createElement("button");
@@ -138,10 +138,10 @@ function addBook() {
   const title = document.getElementById("bookFormTitle").value;
   const author = document.getElementById("bookFormAuthor").value;
   const year = document.getElementById("bookFormYear").value;
-  const isCompleted = document.getElementById("bookFormIsComplete").checked;
+  const isComplete = document.getElementById("bookFormIsComplete").checked;
 
   const generatedID = generateId();
-  const bookObject = generatebookObject(generatedID, title, author, year, isCompleted);
+  const bookObject = generatebookObject(generatedID, title, author, year, isComplete);
   books.push(bookObject);
 
   document.dispatchEvent(new Event(RENDER_EVENT));
@@ -152,7 +152,7 @@ function addCompleteRead(bookId) {
   const bookTarget = findBook(bookId);
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = true;
+  bookTarget.isComplete = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
@@ -170,7 +170,7 @@ function undoCompletedRead(bookId) {
   const bookTarget = findBook(bookId);
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = false;
+  bookTarget.isComplete = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
@@ -259,7 +259,7 @@ document.addEventListener(RENDER_EVENT, function () {
 
   books.forEach((bookItem) => {
     const bookElement = makeBook(bookItem);
-    bookItem.isCompleted ? completeBookList.append(bookElement) : incompleteBookList.append(bookElement);
+    bookItem.isComplete ? completeBookList.append(bookElement) : incompleteBookList.append(bookElement);
   });
 
   if (incompleteBookList.children.length === 0) {

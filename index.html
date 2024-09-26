@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--=============== FONT AWESOME ===============-->
+    <title>Bookshelf App</title>
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -12,48 +12,45 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Bookshelf App</title>
+    <script defer src="main.js"></script>
   </head>
   <body>
-    <!--==================== NAVBAR ====================-->
     <header>
-      <h2>Bookshelf</h2>
+      <h1>Bookshelf App</h1>
     </header>
-    <!--==================== MAIN ====================-->
     <main>
       <aside class="form-content">
-        <div class="main-form">
-          <h2>Tambah Buku</h2>
-          <form class="form-control" id="form">
+        <section class="main-form">
+          <h2>Tambah Buku Baru</h2>
+          <form id="bookForm" data-testid="bookForm">
             <div class="input-field">
-              <input class="input-item" type="text" id="inputBookTitle" name="inputBookTitle" required />
-              <label class="label-item" for="inputBookTitle">Judul</label>
+              <label class="label-item" for="bookFormTitle">Judul</label>
+              <input class="input-item" id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
             </div>
             <div class="input-field">
-              <input class="input-item" type="text" id="inputBookAuthor" name="inputBookAuthor" required />
-              <label class="label-item" for="inputBookAuthor">Penulis</label>
+              <label class="label-item" for="bookFormAuthor">Penulis</label>
+              <input class="input-item" id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
             </div>
             <div class="input-field">
-              <input class="input-item" id="inputBookYear" type="number" required />
-              <label class="label-item" for="inputBookYear">Tahun</label>
+              <label class="label-item" for="bookFormYear">Tahun</label>
+              <input class="input-item" id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
             </div>
             <div class="input_inline">
-              <label for="inputBookIsComplete">Selesai dibaca</label>
-              <input id="inputBookIsComplete" type="checkbox" />
+              <label for="bookFormIsComplete">Selesai dibaca</label>
+              <input id="bookFormIsComplete" type="checkbox" data-testid="bookFormIsCompleteCheckbox" />
             </div>
-            <button id="bookSubmit" type="submit" class="submit-btn">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
+            <button id="bookFormSubmit" class="submit-btn" type="submit" data-testid="bookFormSubmitButton">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
           </form>
           <button id="booksClear" class="remove-btn">Hapus Semua Buku</button>
-        </div>
+        </section>
         <section class="search_section">
           <h2>Cari Buku</h2>
           <div class="InputContainer">
-            <input id="searchBookTitle" type="text" placeholder="cari judul...." class="input" />
-            <label for="input" class="labelforsearch">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </label>
+            <form id="searchBook" data-testid="searchBookForm">
+              <label for="searchBookTitle"></label>
+              <input id="searchBookTitle" class="input" type="text" data-testid="searchBookFormTitleInput" />
+              <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">Cari</button>
+            </form>
             <div class="border"></div>
             <select id="inputSelect" class="dropdown-content">
               <option id="default" value="input" selected>Default</option>
@@ -65,18 +62,41 @@
         </section>
       </aside>
       <article class="right-content">
-        <div class="container">
-          <h2 class="container-header">Belum Selesai Dibaca</h2>
-          <div class="book_item" id="belumselesai-dibaca"></div>
-        </div>
-        <div class="container">
-          <h2 class="container-header">Selesai Dibaca</h2>
-          <div class="book_item" id="selesai-dibaca"></div>
-        </div>
+        <section class="container">
+          <h2 class="container-header">Belum selesai dibaca</h2>
+          <div class="book_item" id="incompleteBookList" data-testid="incompleteBookList">
+            <div data-bookid="123123123" data-testid="bookItem" id="bookItem">
+              <div class="inner">
+                <h3 data-testid="bookItemTitle" class="bookItemTitle"></h3>
+                <p data-testid="bookItemAuthor" class="bookItemAuthor"></p>
+                <p data-testid="bookItemYear" class="bookItemYear"></p>
+              </div>
+              <div>
+                <button data-testid="bookItemIsCompleteButton" class="completeButton"></button>
+                <button data-testid="bookItemDeleteButton" class="deleteButton"></button>
+                <button data-testid="bookItemEditButton" class="editButton"></button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="container">
+          <h2 class="container-header">Selesai dibaca</h2>
+          <div class="book_item" id="completeBookList" data-testid="completeBookList">
+            <div data-bookid="456456456" data-testid="bookItem" id="bookItem">
+              <div head-book="headBook">
+                <h3 data-testid="bookItemTitle" class="bookItemTitle"></h3>
+                <p data-testid="bookItemAuthor" class="bookItemAuthor"></p>
+                <p data-testid="bookItemYear" class="bookItemYear"></p>
+              </div>
+              <div>
+                <button data-testid="bookItemIsCompleteButton" class="completeButton"></button>
+                <button data-testid="bookItemDeleteButton" class="deleteButton"></button>
+                <button data-testid="bookItemEditButton" class="editButton"></button>
+              </div>
+            </div>
+          </div>
+        </section>
       </article>
     </main>
-
-    <!--=============== MAIN JS ===============-->
-    <script src="js/script.js"></script>
   </body>
 </html>
